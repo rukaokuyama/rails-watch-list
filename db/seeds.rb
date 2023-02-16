@@ -12,9 +12,11 @@ response = JSON.parse(URI.open(url).read)
 
 response['results'].each do |movie_hash|
   puts
-  p movie_hash
+  # p movie_hash
   # create an instance with the hash
   Movie.create!(
-    poster_url: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path']
+    poster_url: "https://image.tmdb.org/t/p/w500" + movie_hash['poster_path'],
+    overview: movie_hash["overview"],
+    title: movie_hash["title"]
   )
 end
