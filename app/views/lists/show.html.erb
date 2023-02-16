@@ -1,9 +1,9 @@
-<h1>Movies</h1>
-<div class="row cards-movie">
+<h1 class="col-xs-1" align="center">Movies</h1>
+<div class="row cards-movie col-xs-1" align="center">
       <% @list.bookmarks.each do |bookmark| %>
         <div class="col-6-sm">
           <div class="card-movie">
-          <div class="card-poster">
+          <div class="card-poster shadow p-3 mb-5 bg-body-tertiary rounded">
               <%= image_tag bookmark.movie.poster_url, alt: "movie poster" %>
           </div>
           <div class="card-description">
@@ -18,7 +18,7 @@
               <p><strong>Review</strong></p>
             <div class="card-review">
               <p><%= bookmark.comment %></p>
-            <button class="delete-movie btn btn-danger">Delete</button>
+            <button class="delete-movie btn btn-danger mb-2">Delete</button>
             <%= link_to "", bookmark_path(bookmark), method: :delete, id:"delete-bookmark", class: "hidden" %>
             </div>
           </div>
