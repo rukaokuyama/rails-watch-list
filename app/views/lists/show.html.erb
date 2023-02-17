@@ -18,10 +18,10 @@
               <p><strong>Review</strong></p>
             <div class="card-review">
               <p><%= bookmark.comment %></p>
-            <button class="delete-movie btn btn-danger mb-2">Delete</button>
-            <%= link_to "", bookmark_path(bookmark), method: :delete, id:"delete-bookmark", class: "hidden" %>
-            </div>
+            <%= link_to "Delete", bookmark_path(bookmark),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},class:"btn btn-danger"%>            </div>
           </div>
         </div>
       </div>
       <% end %>
+      <%= link_to "Add a new bookmark 📖", new_list_bookmark_path(@list), class:"btn btn-success" %>
+    <%= link_to "Back to your lists", lists_path, class:"btn btn-primary"%>
