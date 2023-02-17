@@ -4,26 +4,14 @@
 
 <div class="container">
 <h3 class="text-light">Your list</h3>
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list)%></li>
-  <% end %>
-</ul>
-
-<%# Figure out how to implement links to cards %>
-
 <div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    Comedy
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-    Horror
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-    Action
-  </div>
+  <% @lists.each do |list| %>
+      <%= link_to list_path(list), class:"btn btn-outline-light" do %>
+      <div class="item card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>)">
+      <%= list.name %>
+      </div>
+      <% end %>
+  <% end %>
 
 </div>
   <div class="btn-new-list mt-3">
